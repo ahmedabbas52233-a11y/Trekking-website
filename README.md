@@ -26,7 +26,7 @@ Google Fonts: Poppins font family.
 
 🚀 Installation & Usage
 Clone the repository:
-git clone https://github.com/yourusername/uncharted-travels.git
+git clone https://github.com/ahmedabbas52233-a11y/uncharted-travels.git
 Open the project folder.
 Open index.html in your web browser to view the site locally.
 📞 Contact
