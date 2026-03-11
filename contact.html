@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="StyleSheet\contact style3.css">
+	<link rel="icon" type="image/png" href="htmlpictures/favicon-32x32.png">
+</head>
+
+<body>
+	<section class="header">
+
+		<nav>
+			<a href="index.html"><img src="htmlpictures/Logo1.png"
+					alt="Uncharted Travels Logo - Mountain Adventure Company"></a>
+					<span class="logo-text">Uncharted Travels</span>
+			<div class="nav-links">
+
+				<ul>
+					<li><a href="index.html">HOME</a></li>
+					<li><a href="destination.html">DESTINATIONS</a></li>
+					<li><a href="family.html">FAMILY TREKS</a></li>
+					<li><a href="wildtrek.html">WILD TREKS</a></li>
+					<li><a href="contact.html">CONTACT</a></li>
+				</ul>
+			</div>
+
+		</nav>
+		<div class="text-box">
+			<h1>If Not Now, When?</h1>
+			<a href="" class="head-btn">Contact Now !</a>
+
+		</div>
+
+	</section>
+	<section class="body">
+		<div class="contact">
+			<h2>Contact Us</h2>
+			<p>Please Contact Us for any question that you may have by submitting your details below.</p>
+			<div class="container">
+				<div class="contactinfo">
+					<div class="box">
+						<div class="icon"><img src="htmlpictures/maplogo.png" alt="Map icon"></div>
+						<div class="text">
+							<h3>Address</h3>
+							<p> Uncharted Travels Office, Islamabad</p>
+
+						</div>
+					</div>
+					<div class="box">
+						<div class="icon"><img src="htmlpictures/phonelogo.png" alt="Phone icon"></div>
+						<div class="text">
+							<h3>Phone</h3>
+							<p>+92-XXX-XXXXXXX</p>
+
+						</div>
+					</div>
+					<div class="box">
+						<div class="icon"><img src="htmlpictures/maillogo.png" alt="Email icon"></div>
+						<div class="text">
+							<h3>Email</h3>
+							<p>info@unchartedtravels.pk </p>
+
+						</div>
+				</div>
+				<div class="ContactForm" id="contact-form">
+					<form action="submit-form.php" method="POST">
+						<h2>Send Us a Message</h2>
+
+						<div class="form-row">
+							<div class="inputbox">
+								<input type="text" name="firstname" required>
+								<span>First Name</span>
+							</div>
+							<div class="inputbox">
+								<input type="text" name="lastname" required>
+								<span>Last Name</span>
+							</div>
+						</div>
+
+						<div class="inputbox">
+							<input type="email" name="email" required>
+							<span>Email Address</span>
+						</div>
+
+						<div class="inputbox">
+							<input type="tel" name="phone">
+							<span>Phone Number (Optional)</span>
+						</div>
+
+						<div class="inputbox">
+							<select name="inquiry_type" required>
+								<option value="">Select Inquiry Type</option>
+								<option value="booking">Booking Request</option>
+								<option value="information">General Information</option>
+								<option value="custom">Custom Package</option>
+								<option value="support">Customer Support</option>
+							</select>
+							<span class="select-label">Inquiry Type</span>
+						</div>
+
+						<div class="inputbox">
+							<textarea name="message" required minlength="10"></textarea>
+							<span>Your Message</span>
+						</div>
+
+						<div class="checkbox-container">
+							<input type="checkbox" id="newsletter" name="newsletter">
+							<label for="newsletter">Subscribe to our newsletter for travel updates</label>
+						</div>
+
+						<div class="inputbox">
+							<input type="submit" value="Send Message" class="submit-btn">
+						</div>
+
+						<!-- Success message (hidden by default) -->
+						<div class="success-message" style="display: none;">
+							<i class="fas fa-check-circle"></i>
+							<p>Thank you! We'll get back to you within 24 hours.</p>
+						</div>
+					</form>
+				</div>
+			</div>
+			<section class="faq-section">
+				<h2>Frequently Asked Questions</h2>
+				<div class="faq-container">
+					<div class="faq-item">
+						<button class="faq-question">How do I book a trek?</button>
+						<div class="faq-answer">
+							<p>Simply fill out the contact form above or call us directly. We'll respond within 24 hours
+								with available dates and pricing.</p>
+						</div>
+					</div>
+					<div class="faq-item">
+						<button class="faq-question">What's included in family treks?</button>
+						<div class="faq-answer">
+							<p>All family treks include accommodation, meals, experienced guides, and safety equipment.
+								Transportation can be arranged separately.</p>
+						</div>
+					</div>
+					<div class="faq-item">
+						<button class="faq-question">Do you offer custom packages?</button>
+						<div class="faq-answer">
+							<p>Yes! We specialize in tailor-made adventures. Contact us with your preferences and group
+								size for a personalized itinerary.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="emergency-banner">
+				<div class="emergency-content">
+					<i class="fas fa-exclamation-circle"></i>
+					<div>
+						<h3>24/7 Emergency Support</h3>
+						<p>For urgent assistance during treks: <strong>+92-XXX-XXXXXXX</strong></p>
+					</div>
+				</div>
+			</section>
+			
+			<div class="box">
+				<div class="icon"><i class="far fa-clock"></i></div>
+				<div class="text">
+					<h3>Office Hours</h3>
+					<p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+						Saturday: 10:00 AM - 4:00 PM<br>
+						Sunday: Closed</p>
+				</div>
+			</div>
+
+	</section>
+	<footer>
+		<div class="footer-content">
+			<div class="contact-info">
+				<h4>Contact Us</h4>
+				<p>Email: info@unchartedtravels.pk</p>
+				<p>Phone: +92-XXX-XXXXXXX</p>
+			</div>
+			<div class="social-links">
+				<a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+				<a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+			</div>
+		</div>
+		<p class="copyright">&copy; 2025 Uncharted Travels. All rights reserved.</p>
+	</footer>
+
+</body>
+
+</html>
