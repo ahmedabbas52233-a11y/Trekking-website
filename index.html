@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /> <meta name="description" content="Experience the best trekking adventures in Pakistan with Uncharted Travels. Explore breathtaking landscapes and create unforgettable memories.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uncharted Travels — Pakistan's Finest Trekking</title>
+    <link rel="icon" type="image/png" href="htmlpictures/favicon-32x32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      /* ── TOKENS ── */
+      :root {
+        --ink: #0d1f2d;
+        --forest: #2a5c45;
+        --gold: #c9a85c;
+        --ivory: #f5f0e8;
+        --smoke: #eae6de;
+        --white: #fafaf8;
+        --font-display: "Cormorant Garamond", Georgia, serif;
+        --font-body: "Jost", sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--white);
+        color: var(--ink);
+        overflow-x: hidden;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 6%;
+        transition:
+          background 0.4s ease,
+          padding 0.4s ease;
+      }
+      nav.scrolled {
+        background: rgba(13, 31, 45, 0.97);
+        padding: 16px 6%;
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+      }
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+      .nav-brand img {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid rgba(201, 168, 92, 0.4);
+      }
+      .nav-brand span {
+        color: #fff;
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+      }
+      .nav-links ul {
+        list-style: none;
+        display: flex;
+        gap: 36px;
+      }
+      .nav-links ul li a {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        position: relative;
+        transition: color 0.3s;
+      }
+      .nav-links ul li a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--gold);
+        transition: width 0.4s ease;
+      }
+      .nav-links ul li a:hover {
+        color: #fff;
+      }
+      .nav-links ul li a:hover::after {
+        width: 100%;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        min-height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(
+            160deg,
+            rgba(13, 31, 45, 0.65) 0%,
+            rgba(13, 31, 45, 0.3) 50%,
+            rgba(13, 31, 45, 0.7) 100%
+          ),
+          url("Csspictures/cover.JPG");
+        background-size: cover;
+        background-position: center;
+        transform: scale(1.04);
+        transition: transform 8s ease-out;
+      }
+      .hero-bg.loaded {
+        transform: scale(1);
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: #fff;
+        padding: 0 6%;
+        animation: fadeUp 1.2s ease both;
+      }
+      .hero-tag {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--gold);
+        border: 1px solid rgba(201, 168, 92, 0.5);
+        padding: 6px 20px;
+        border-radius: 20px;
+        margin-bottom: 32px;
+      }
+      .hero-content h1 {
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 8vw, 7rem);
+        font-weight: 300;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        margin-bottom: 24px;
+      }
+      .hero-content h1 em {
+        font-style: italic;
+        color: var(--gold);
+      }
+      .hero-content p {
+        font-size: 15px;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        opacity: 0.85;
+        margin-bottom: 48px;
+        text-transform: uppercase;
+      }
+      .btn-primary {
+        display: inline-block;
+        padding: 15px 44px;
+        background: var(--gold);
+        color: var(--ink);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 2px;
+        transition: all 0.35s ease;
+      }
+      .btn-primary:hover {
+        background: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+      }
+      .hero-scroll {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 9px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        animation: bounce 2s infinite;
+      }
+      .hero-scroll i {
+        font-size: 16px;
+      }
+
+      /* ── DESTINATIONS SECTION ── */
+      .destinations {
+        padding: 120px 6%;
+        background: var(--white);
+      }
+      .section-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+      }
+      .section-title {
+        font-family: var(--font-display);
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 300;
+        line-height: 1.1;
+        color: var(--ink);
+        margin-bottom: 60px;
+      }
+      .section-title em {
+        font-style: italic;
+        color: var(--forest);
+      }
+      .dest-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 16px;
+      }
+      .dest-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+        cursor: pointer;
+        aspect-ratio: 3/4;
+      }
+      .dest-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(13, 31, 45, 0.85) 0%,
+          transparent 55%
+        );
+        z-index: 1;
+        transition: opacity 0.4s;
+      }
+      .dest-card:hover::before {
+        opacity: 0.7;
+      }
+      .dest-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s ease;
+      }
+      .dest-card:hover img {
+        transform: scale(1.08);
+      }
+      .dest-card-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        padding: 28px 22px;
+        color: #fff;
+      }
+      .dest-card-text small {
+        font-size: 9px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--gold);
+        display: block;
+        margin-bottom: 6px;
+      }
+      .dest-card-text h3 {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 400;
+      }
+      .dest-cta {
+        margin-top: 60px;
+        text-align: center;
+      }
+      .btn-outline {
+        display: inline-block;
+        padding: 14px 44px;
+        border: 1px solid var(--ink);
+        color: var(--ink);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 2px;
+        transition: all 0.35s ease;
+      }
+      .btn-outline:hover {
+        background: var(--ink);
+        color: #fff;
+      }
+
+      /* ── PROMO BANNER ── */
+      .banner {
+        margin: 0 6%;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .banner-bg {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(13, 31, 45, 0.6), rgba(13, 31, 45, 0.7)),
+          url("Csspictures/hunza.JPG");
+        background-size: cover;
+        background-position: center;
+      }
+      .banner-content {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+        padding: 80px 6%;
+      }
+      .banner-content h2 {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 300;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+      .banner-content p {
+        font-size: 15px;
+        font-weight: 300;
+        opacity: 0.85;
+        max-width: 600px;
+        margin: 0 auto 36px;
+        line-height: 1.7;
+      }
+
+      /* ── WHY US ── */
+      .why-us {
+        padding: 120px 6%;
+        background: var(--ivory);
+      }
+      .why-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 40px;
+        margin-top: 60px;
+      }
+      .why-item {
+        padding: 40px 32px;
+        background: var(--white);
+        border-radius: 6px;
+        border-top: 3px solid var(--gold);
+        transition:
+          transform 0.4s,
+          box-shadow 0.4s;
+      }
+      .why-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 50px rgba(13, 31, 45, 0.1);
+      }
+      .why-item .icon {
+        width: 52px;
+        height: 52px;
+        background: var(--forest);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+      }
+      .why-item .icon i {
+        color: var(--gold);
+        font-size: 20px;
+      }
+      .why-item h3 {
+        font-family: var(--font-display);
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--ink);
+      }
+      .why-item p {
+        font-size: 14px;
+        line-height: 1.8;
+        color: #5a6a76;
+        font-weight: 300;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--ink);
+        color: #fff;
+        padding: 70px 6% 28px;
+        position: relative;
+      }
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--forest),
+          var(--gold),
+          var(--forest)
+        );
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 60px;
+        margin-bottom: 50px;
+      }
+      .footer-brand h4 {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 14px;
+      }
+      .footer-brand p {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 14px;
+        line-height: 1.8;
+        font-weight: 300;
+        max-width: 280px;
+      }
+      .footer-col h5 {
+        font-size: 10px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 20px;
+      }
+      .footer-col p,
+      .footer-col a {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 14px;
+        line-height: 2.1;
+        font-weight: 300;
+        text-decoration: none;
+        display: block;
+        transition: color 0.3s;
+      }
+      .footer-col a:hover {
+        color: var(--gold);
+      }
+      .social-row {
+        display: flex;
+        gap: 14px;
+        margin-top: 8px;
+      }
+      .social-row a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 16px;
+        transition: all 0.3s;
+      }
+      .social-row a:hover {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: var(--ink);
+        transform: translateY(-3px);
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .footer-bottom p {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.35);
+        font-weight: 300;
+      }
+
+      /* ── ANIMATIONS ── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(8px);
+        }
+      }
+
+      /* Reveal-on-scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 900px) {
+        .dest-row {
+          grid-template-columns: 1fr 1fr;
+        }
+        .why-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .nav-links {
+          display: none;
+        }
+        .dest-row {
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+        }
+        .why-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          gap: 12px;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav id="mainNav">
+      <a href="index.html" class="nav-brand">
+        <img src="htmlpictures/Logo1.png" alt="Uncharted Travels Logo" />
+        <span>Uncharted Travels</span>
+      </a>
+      <div class="nav-links">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="destination.html">Destinations</a></li>
+          <li><a href="family.html">Family Treks</a></li>
+          <li><a href="wildtrek.html">Wild Treks</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-content">
+        <div class="hero-tag">Pakistan's Premier Trekking Co.</div>
+        <h1>Discover<br /><em>Travel Moments</em><br />With Us</h1>
+        <p>The most incredible places to visit in Pakistan</p>
+        <a href="destination.html" class="btn-primary">Explore Destinations</a>
+      </div>
+      <div class="hero-scroll">
+        <span>Scroll</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- DESTINATIONS -->
+    <section class="destinations">
+      <div class="reveal">
+        <p class="section-label">Where To Next?</p>
+        <h2 class="section-title">
+          Plan Your Trip<br /><em>With Our Experts</em>
+        </h2>
+      </div>
+      <div class="dest-row reveal">
+        <div class="dest-card">
+          <img src="Csspictures/hunzaB.jpg" alt="Hunza Valley" />
+          <div class="dest-card-text">
+            <small>Gilgit-Baltistan</small>
+            <h3>Hunza</h3>
+          </div>
+        </div>
+        <div class="dest-card">
+          <img src="Csspictures/skardu1.jpg" alt="Skardu" />
+          <div class="dest-card-text">
+            <small>Baltistan</small>
+            <h3>Skardu</h3>
+          </div>
+        </div>
+        <div class="dest-card">
+          <img src="Csspictures/astore11.jpg" alt="Astore" />
+          <div class="dest-card-text">
+            <small>Gilgit-Baltistan</small>
+            <h3>Astore</h3>
+          </div>
+        </div>
+        <div class="dest-card">
+          <img src="Csspictures/khaplu.jpg" alt="Khaplu" />
+          <div class="dest-card-text">
+            <small>Ghanche District</small>
+            <h3>Khaplu</h3>
+          </div>
+        </div>
+      </div>
+      <div class="dest-cta reveal">
+        <a href="destination.html" class="btn-outline">View All Destinations</a>
+      </div>
+    </section>
+
+    <!-- PROMO BANNER -->
+    <section class="banner reveal">
+      <div class="banner-bg"></div>
+      <div class="banner-content">
+        <h2>
+<em class="banner-em">is waiting.</em>
+          >
+        </h2>
+        <p>
+          You love to travel, and so do we. Our local experts guarantee a trip
+          you could never plan yourself. Stop googling and go.
+        </p>
+        <a href="contact.html" class="btn-primary">Book Your Adventure</a>
+      </div>
+    </section>
+
+    <!-- WHY US -->
+    <section class="why-us">
+      <div class="reveal">
+        <p class="section-label">Why Choose Us</p>
+        <h2 class="section-title">Travel With<br /><em>Confidence</em></h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal">
+          <div class="icon"><i class="fas fa-map-marked-alt"></i></div>
+          <h3>Local Experts</h3>
+          <p>
+            Our guides were born in these mountains. They know every hidden
+            trail, viewpoint, and story — you get an experience that no
+            guidebook can offer.
+          </p>
+        </div>
+        <div class="why-item reveal">
+          <div class="icon"><i class="fas fa-tag"></i></div>
+          <h3>Best Prices</h3>
+          <p>
+            Transparent, competitive pricing without hidden fees. We believe
+            extraordinary adventures should be accessible without compromising
+            on quality or safety.
+          </p>
+        </div>
+        <div class="why-item reveal">
+          <div class="icon"><i class="fas fa-headset"></i></div>
+          <h3>24/7 Support</h3>
+          <p>
+            Our team is on call around the clock throughout your journey.
+            Whether it's a question before you depart or emergency support
+            mid-trek — we're there.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>Uncharted Travels</h4>
+          <p>
+            Pakistan's premier mountain trekking company, connecting adventurers
+            with the world's most dramatic landscapes since 2010.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <a href="destination.html">Destinations</a>
+          <a href="family.html">Family Treks</a>
+          <a href="wildtrek.html">Wild Treks</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <h5>Get In Touch</h5>
+          <p>info@unchartedtravels.pk</p>
+          <p>+92-XXX-XXXXXXX</p>
+          <p>Islamabad, Pakistan</p>
+          <div class="social-row">
+            <a href="#" aria-label="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="WhatsApp"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Uncharted Travels. All rights reserved.</p>
+        <p>Crafted with ♥ for the mountains</p>
+      </div>
+    </footer>
+
+    <script>
+      // Sticky nav
+      const nav = document.getElementById("mainNav");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 60);
+      });
+
+      // Hero parallax trigger
+      document.getElementById("heroBg").classList.add("loaded");
+
+      // Reveal on scroll
+      const reveals = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+              setTimeout(() => e.target.classList.add("visible"), i * 80);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      reveals.forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

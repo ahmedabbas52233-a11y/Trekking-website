@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <meta name="description" content="Get in touch with us to learn more about our trekking adventures and book your next outdoor experience.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Uncharted Travels</title>
+  <link rel="icon" type="image/png" href="htmlpictures/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --ink:#0D1F2D; --forest:#2A5C45; --gold:#C9A85C;
+      --ivory:#F5F0E8; --white:#FAFAF8;
+      --font-display:'Cormorant Garamond',Georgia,serif;
+      --font-body:'Jost',sans-serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font-body);background:var(--white);color:var(--ink);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);overflow-x:hidden;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:24px 6%;background:rgba(13,31,45,0.95);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
+    .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+    .nav-brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid rgba(201,168,92,0.4);}
+    .nav-brand span{color:#fff;font-family:var(--font-display);font-size:20px;font-weight:600;}
+    .nav-links ul{list-style:none;display:flex;gap:36px;}
+    .nav-links ul li a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;position:relative;transition:color 0.3s;}
+    .nav-links ul li a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.4s;}
+    .nav-links ul li a:hover{color:#fff;}
+    .nav-links ul li a:hover::after{width:100%;}
+
+    /* HERO */
+    .page-hero{min-height:65vh;position:relative;display:flex;align-items:flex-end;padding:0 6% 80px;
+      background-image:linear-gradient(to top,rgba(13,31,45,0.9) 0%,rgba(13,31,45,0.3) 55%,rgba(13,31,45,0.5) 100%),
+      url('Csspictures/conback.JPG');background-size:cover;background-position:center;}
+    .page-hero-content{color:#fff;}
+    .page-hero-content .tag{font-size:10px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;}
+    .page-hero-content h1{font-family:var(--font-display);font-size:clamp(3rem,7vw,6rem);font-weight:300;line-height:1;}
+    .page-hero-content p{font-size:15px;font-weight:300;opacity:0.75;margin-top:14px;}
+
+    /* CONTACT SECTION */
+    .contact-section{padding:100px 6%;background:var(--ivory);}
+    .contact-intro{text-align:center;margin-bottom:70px;}
+    .contact-intro .label{font-size:10px;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+    .contact-intro h2{font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.5rem);font-weight:300;color:var(--ink);}
+    .contact-intro h2 em{font-style:italic;color:var(--forest);}
+    .contact-intro p{font-size:15px;font-weight:300;color:#5a6a76;margin-top:16px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7;}
+
+    /* 2-col layout */
+    .contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:50px;align-items:start;}
+
+    /* INFO BOXES - FIX: properly closed .contactinfo in HTML below */
+    .contactinfo{display:flex;flex-direction:column;gap:20px;}
+    .info-box{display:flex;align-items:flex-start;gap:20px;padding:24px;background:var(--white);border-radius:6px;transition:all 0.3s;}
+    .info-box:hover{transform:translateX(6px);box-shadow:0 8px 30px rgba(13,31,45,0.08);}
+    .info-box .icon{width:48px;height:48px;background:var(--forest);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .info-box .icon img{width:22px;height:22px;filter:brightness(0) invert(1);}
+    .info-box .icon i{color:#fff;font-size:18px;}
+    .info-box h3{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:4px;}
+    .info-box p{font-size:13px;color:#5a6a76;font-weight:300;line-height:1.6;}
+
+    /* FORM */
+    .contact-form-wrap{background:var(--white);padding:48px 44px;border-radius:8px;box-shadow:0 4px 40px rgba(13,31,45,0.08);}
+    .contact-form-wrap h3{font-family:var(--font-display);font-size:1.8rem;font-weight:400;color:var(--ink);margin-bottom:36px;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    .field{position:relative;margin-bottom:30px;}
+    .field input,.field textarea,.field select{width:100%;padding:14px 0;font-size:14px;color:var(--ink);border:none;border-bottom:1.5px solid #d0cdc9;outline:none;background:transparent;font-family:var(--font-body);transition:border-color 0.3s;}
+    .field textarea{min-height:100px;resize:vertical;}
+    .field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232A5C45' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right center;padding-right:20px;}
+    .field input:focus,.field textarea:focus,.field select:focus{border-bottom-color:var(--forest);}
+    .field label{position:absolute;left:0;top:14px;font-size:13px;color:#aaa;pointer-events:none;transition:all 0.3s;font-weight:300;}
+    .field input:focus~label,.field input:not(:placeholder-shown)~label,
+    .field textarea:focus~label,.field textarea:valid~label,
+    .field select:focus~label,.field select:valid~label{top:-6px;font-size:11px;color:var(--forest);letter-spacing:0.05em;font-weight:500;}
+    .checkbox-row{display:flex;align-items:center;gap:10px;margin:20px 0;font-size:13px;color:#777;font-weight:300;}
+    .checkbox-row input[type="checkbox"]{width:16px;height:16px;accent-color:var(--forest);}
+    .btn-submit{width:100%;padding:16px;background:var(--forest);color:#fff;border:none;border-radius:3px;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;}
+    .btn-submit:hover{background:var(--ink);transform:translateY(-2px);box-shadow:0 10px 30px rgba(13,31,45,0.2);}
+    .success-msg{display:none;background:#f0faf5;border-left:4px solid var(--forest);color:var(--forest);padding:20px;border-radius:4px;margin-top:20px;text-align:center;}
+    .success-msg i{font-size:28px;margin-bottom:8px;display:block;}
+
+    /* EMERGENCY */
+    .emergency{background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff;padding:50px 6%;text-align:center;position:relative;overflow:hidden;}
+    .emergency::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(255,255,255,0.04) 10px,rgba(255,255,255,0.04) 20px);animation:stripes 20s linear infinite;}
+    @keyframes stripes{to{background-position:100px 100px;}}
+    .emergency-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;}
+    .emergency i{font-size:44px;animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.1);}}
+    .emergency h3{font-family:var(--font-display);font-size:2rem;font-weight:400;margin-bottom:6px;}
+    .emergency p{font-size:15px;opacity:0.9;font-weight:300;}
+    .emergency strong{font-size:20px;}
+
+    /* FAQ */
+    .faq-section{padding:100px 6%;background:var(--white);}
+    .faq-section .label{font-size:10px;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+    .faq-section h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--ink);margin-bottom:60px;}
+    .faq-section h2 em{font-style:italic;color:var(--forest);}
+    .faq-list{max-width:800px;margin:0 auto;}
+    .faq-item{border-bottom:1px solid #e8e4de;overflow:hidden;}
+    .faq-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:26px 0;background:none;border:none;cursor:pointer;font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--ink);text-align:left;transition:color 0.3s;}
+    .faq-btn:hover{color:var(--forest);}
+    .faq-btn .icon{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:16px;transition:all 0.3s;font-weight:300;}
+    .faq-item.open .faq-btn{color:var(--forest);}
+    .faq-item.open .faq-btn .icon{background:var(--forest);border-color:var(--forest);color:#fff;transform:rotate(45deg);}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;}
+    .faq-item.open .faq-answer{max-height:300px;}
+    .faq-answer p{padding-bottom:26px;font-size:14px;font-weight:300;color:#5a6a76;line-height:1.9;}
+
+    /* FOOTER */
+    footer{background:var(--ink);color:#fff;padding:70px 6% 28px;position:relative;}
+    footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--forest),var(--gold),var(--forest));}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:50px;}
+    .footer-brand h4{font-family:var(--font-display);font-size:1.5rem;font-weight:400;margin-bottom:14px;}
+    .footer-brand p{color:rgba(255,255,255,0.5);font-size:14px;line-height:1.8;font-weight:300;max-width:280px;}
+    .footer-col h5{font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+    .footer-col p,.footer-col a{color:rgba(255,255,255,0.5);font-size:14px;line-height:2.1;font-weight:300;text-decoration:none;display:block;transition:color 0.3s;}
+    .footer-col a:hover{color:var(--gold);}
+    .social-row{display:flex;gap:14px;margin-top:8px;}
+    .social-row a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);font-size:16px;text-decoration:none;transition:all 0.3s;}
+    .social-row a:hover{background:var(--gold);border-color:var(--gold);color:var(--ink);transform:translateY(-3px);}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;display:flex;justify-content:space-between;align-items:center;}
+    .footer-bottom p{font-size:12px;color:rgba(255,255,255,0.3);font-weight:300;}
+
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:900px){.contact-grid{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:600px){.nav-links{display:none;}.form-row{grid-template-columns:1fr;}.contact-form-wrap{padding:32px 24px;}.footer-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;gap:12px;}.emergency-inner{flex-direction:column;text-align:center;}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <img src="htmlpictures/Logo1.png" alt="Uncharted Travels">
+      <span>Uncharted Travels</span>
+    </a>
+    <div class="nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destination.html">Destinations</a></li>
+        <li><a href="family.html">Family Treks</a></li>
+        <li><a href="wildtrek.html">Wild Treks</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="tag">Reach Out</span>
+      <h1>If Not Now,<br>When?</h1>
+      <p>Your next great adventure begins with a single message.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-intro reveal">
+      <p class="label">Get In Touch</p>
+      <h2>Let's Plan<br><em>Your Adventure</em></h2>
+      <p>Contact us with any questions you may have — we respond within 24 hours and love talking mountains.</p>
+    </div>
+
+    <div class="contact-grid reveal">
+
+      <!-- ✅ FIX: .contactinfo is now properly closed before .contact-form-wrap -->
+      <div class="contactinfo">
+        <div class="info-box">
+          <div class="icon"><img src="htmlpictures/maplogo.png" alt="Map"></div>
+          <div>
+            <h3>Address</h3>
+            <p>Uncharted Travels Office, Islamabad, Pakistan</p>
+          </div>
+        </div>
+        <div class="info-box">
+          <div class="icon"><img src="htmlpictures/phonelogo.png" alt="Phone"></div>
+          <div>
+            <h3>Phone</h3>
+            <p>+92-XXX-XXXXXXX</p>
+          </div>
+        </div>
+        <div class="info-box">
+          <div class="icon"><img src="htmlpictures/maillogo.png" alt="Email"></div>
+          <div>
+            <h3>Email</h3>
+            <p>info@unchartedtravels.pk</p>
+          </div>
+        </div>
+        <div class="info-box">
+          <div class="icon"><i class="far fa-clock"></i></div>
+          <div>
+            <h3>Office Hours</h3>
+            <p>Mon–Fri: 9:00 AM – 6:00 PM<br>Saturday: 10:00 AM – 4:00 PM<br>Sunday: Closed</p>
+          </div>
+        </div>
+      </div><!-- ✅ .contactinfo closed here -->
+
+      <!-- FORM -->
+      <div class="contact-form-wrap">
+        <h3>Send Us a Message</h3>
+        <form id="contactForm" action="submit-form.php" method="POST">
+          <div class="form-row">
+            <div class="field">
+              <input type="text" name="firstname" id="fn" placeholder=" " required>
+              <label for="fn">First Name</label>
+            </div>
+            <div class="field">
+              <input type="text" name="lastname" id="ln" placeholder=" " required>
+              <label for="ln">Last Name</label>
+            </div>
+          </div>
+          <div class="field">
+            <input type="email" name="email" id="em" placeholder=" " required>
+            <label for="em">Email Address</label>
+          </div>
+          <div class="field">
+            <input type="tel" name="phone" id="ph" placeholder=" ">
+            <label for="ph">Phone Number (Optional)</label>
+          </div>
+          <div class="field">
+            <select name="inquiry_type" id="iq" required>
+              <option value="" disabled selected></option>
+              <option value="booking">Booking Request</option>
+              <option value="information">General Information</option>
+              <option value="custom">Custom Package</option>
+              <option value="support">Customer Support</option>
+            </select>
+            <label for="iq">Inquiry Type</label>
+          </div>
+          <div class="field">
+            <textarea name="message" id="msg" placeholder=" " required minlength="10"></textarea>
+            <label for="msg">Your Message</label>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="newsletter" name="newsletter">
+            <label for="newsletter">Subscribe to our newsletter for travel updates</label>
+          </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+          <div class="success-msg" id="successMsg">
+            <i class="fas fa-check-circle"></i>
+            <p>Thank you! We'll get back to you within 24 hours.</p>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EMERGENCY BANNER -->
+  <section class="emergency reveal">
+    <div class="emergency-inner">
+      <i class="fas fa-exclamation-circle"></i>
+      <div>
+        <h3>24/7 Emergency Support</h3>
+        <p>For urgent assistance during your trek: <strong>+92-XXX-XXXXXXX</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ - FIX: JavaScript now wired up correctly -->
+  <section class="faq-section">
+    <div class="reveal">
+      <p class="label">Have Questions?</p>
+      <h2>Frequently Asked<br><em>Questions</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          <span>How do I book a trek?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Simply fill out the contact form above or call us directly. We'll respond within 24 hours with available dates and pricing for your chosen trek.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          <span>What's included in family treks?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>All family treks include accommodation, meals, experienced certified guides, and safety equipment. Transportation can be arranged separately for an additional fee.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          <span>Do you offer custom packages?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes! We specialise in tailor-made adventures. Contact us with your preferences, dates, and group size and we'll design a personalised itinerary just for you.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          <span>What fitness level is required?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We offer treks for all fitness levels, from gentle family walks to demanding multi-day expeditions. We'll match you to the right trek during our initial consultation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>Uncharted Travels</h4>
+        <p>Pakistan's premier mountain trekking company, connecting adventurers with the world's most dramatic landscapes since 2010.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <a href="destination.html">Destinations</a>
+        <a href="family.html">Family Treks</a>
+        <a href="wildtrek.html">Wild Treks</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Get In Touch</h5>
+        <p>info@unchartedtravels.pk</p>
+        <p>+92-XXX-XXXXXXX</p>
+        <p>Islamabad, Pakistan</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Uncharted Travels. All rights reserved.</p>
+      <p>Crafted with ♥ for the mountains</p>
+    </div>
+  </footer>
+
+  <script>
+    // ✅ FIX: FAQ accordion was missing JavaScript entirely — now implemented
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        document.querySelectorAll('.faq-btn').forEach(b => b.setAttribute('aria-expanded','false'));
+        // Open clicked (toggle)
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Form submit demo (preventDefault since PHP handler not present)
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('successMsg').style.display = 'block';
+      this.reset();
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => entries.forEach((e,i) => {
+      if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*80);
+    }), {threshold:0.08});
+    reveals.forEach(el=>obs.observe(el));
+  </script>
+</body>
+</html>

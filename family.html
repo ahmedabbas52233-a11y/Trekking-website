@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <meta name="description" content="Explore our family-friendly trekking adventures designed for all ages and skill levels.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Treks — Uncharted Travels</title>
+  <link rel="icon" type="image/png" href="htmlpictures/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --ink:#0D1F2D; --forest:#2A5C45; --gold:#C9A85C;
+      --ivory:#F5F0E8; --white:#FAFAF8;
+      --font-display:'Cormorant Garamond',Georgia,serif;
+      --font-body:'Jost',sans-serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font-body);background:var(--white);color:var(--ink);overflow-x:hidden;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:24px 6%;background:rgba(13,31,45,0.95); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);}
+    .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+    .nav-brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid rgba(201,168,92,0.4);}
+    .nav-brand span{color:#fff;font-family:var(--font-display);font-size:20px;font-weight:600;}
+    .nav-links ul{list-style:none;display:flex;gap:36px;}
+    .nav-links ul li a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;position:relative;transition:color 0.3s;}
+    .nav-links ul li a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.4s;}
+    .nav-links ul li a:hover{color:#fff;}
+    .nav-links ul li a:hover::after{width:100%;}
+
+    .page-hero{min-height:80vh;position:relative;display:flex;align-items:flex-end;padding:0 6% 80px;
+      background-image:linear-gradient(to top,rgba(13,31,45,0.88) 0%,rgba(13,31,45,0.2) 55%,rgba(13,31,45,0.4) 100%),
+      url('Csspictures/fam1.jpg');background-size:cover;background-position:center;}
+    .page-hero-content{color:#fff;}
+    .page-hero-content .tag{font-size:10px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;}
+    .page-hero-content h1{font-family:var(--font-display);font-size:clamp(3rem,7vw,6rem);font-weight:300;line-height:1.05;}
+    .page-hero-content p{font-size:15px;font-weight:300;opacity:0.75;margin-top:14px;letter-spacing:0.04em;}
+
+    /* STORY SECTION */
+    .story{display:grid;grid-template-columns:1fr 1.6fr;gap:0;background:var(--ivory);}
+    .story-image{min-height:500px;background-image:url('htmlpictures/familyhead.jpg');background-size:cover;background-position:center;}
+    .story-text{padding:80px 60px;display:flex;flex-direction:column;justify-content:center;}
+    .story-text .eyebrow{font-size:10px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+    .story-text h2{font-family:var(--font-display);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:24px;color:var(--ink);}
+    .story-text h2 em{font-style:italic;color:var(--forest);}
+    .story-text p{font-size:14px;line-height:2.0;font-weight:300;color:#4a5a65;margin-bottom:1.2em;}
+
+    /* MULTI-DAY STRIP */
+    .multi-day{padding:80px 6%;background:var(--ink);color:#fff;text-align:center;}
+    .multi-day h2{font-family:var(--font-display);font-size:2.5rem;font-weight:300;line-height:1.2;margin-bottom:16px;}
+    .multi-day h2 em{font-style:italic;color:var(--gold);}
+    .multi-day p{font-size:15px;font-weight:300;opacity:0.7;max-width:580px;margin:0 auto 12px;line-height:1.8;}
+    .min-age{display:inline-block;margin-top:20px;padding:8px 24px;border:1px solid rgba(201,168,92,0.4);color:var(--gold);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;border-radius:20px;}
+
+    /* GALLERY */
+    .gallery-section{padding:60px 6% 80px;background:var(--white);}
+    .section-label{font-size:10px;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+    .section-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;margin-bottom:50px;color:var(--ink);}
+    .section-title em{font-style:italic;color:var(--forest);}
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .gallery-item{position:relative;overflow:hidden;border-radius:4px;aspect-ratio:4/3;cursor:pointer;}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;}
+    .gallery-item:hover img{transform:scale(1.07);}
+    .gallery-item .overlay{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(13,31,45,0.75));display:flex;align-items:flex-end;padding:20px;opacity:0;transition:opacity 0.4s;}
+    .gallery-item:hover .overlay{opacity:1;}
+    .gallery-item .overlay span{color:#fff;font-family:var(--font-display);font-size:1.2rem;}
+
+    /* INFO CARDS */
+    .info-section{padding:80px 6%;background:var(--ivory);}
+    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:50px;}
+    .info-card{background:var(--white);padding:36px 28px;border-radius:6px;border-top:3px solid var(--forest);transition:all 0.4s;}
+    .info-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(13,31,45,0.1);}
+    .info-card .emoji{font-size:2rem;margin-bottom:16px;}
+    .info-card h3{font-family:var(--font-display);font-size:1.3rem;font-weight:600;margin-bottom:10px;color:var(--ink);}
+    .info-card p{font-size:13px;line-height:1.9;font-weight:300;color:#5a6a76;}
+
+    /* CTA */
+    .cta-band{margin:0 6% 80px;border-radius:6px;overflow:hidden;position:relative;min-height:260px;display:flex;align-items:center;padding:0 8%;}
+    .cta-band-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--forest),var(--ink));}
+    .cta-band-content{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;width:100%;flex-wrap:wrap;gap:30px;}
+    .cta-band-content h2{font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:#fff;line-height:1.2;}
+    .cta-band-content h2 em{color:var(--gold);font-style:italic;}
+    .btn-primary{display:inline-block;padding:15px 44px;background:var(--gold);color:var(--ink);font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all 0.35s;}
+    .btn-primary:hover{background:#fff;transform:translateY(-2px);}
+
+    footer{background:var(--ink);color:#fff;padding:70px 6% 28px;position:relative;}
+    footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--forest),var(--gold),var(--forest));}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:50px;}
+    .footer-brand h4{font-family:var(--font-display);font-size:1.5rem;font-weight:400;margin-bottom:14px;}
+    .footer-brand p{color:rgba(255,255,255,0.5);font-size:14px;line-height:1.8;font-weight:300;max-width:280px;}
+    .footer-col h5{font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+    .footer-col p,.footer-col a{color:rgba(255,255,255,0.5);font-size:14px;line-height:2.1;font-weight:300;text-decoration:none;display:block;transition:color 0.3s;}
+    .footer-col a:hover{color:var(--gold);}
+    .social-row{display:flex;gap:14px;margin-top:8px;}
+    .social-row a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);font-size:16px;text-decoration:none;transition:all 0.3s;}
+    .social-row a:hover{background:var(--gold);border-color:var(--gold);color:var(--ink);transform:translateY(-3px);}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;display:flex;justify-content:space-between;align-items:center;}
+    .footer-bottom p{font-size:12px;color:rgba(255,255,255,0.3);font-weight:300;}
+
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:900px){.story{grid-template-columns:1fr;}.story-image{min-height:300px;}.info-grid{grid-template-columns:1fr 1fr;}.gallery-grid{grid-template-columns:1fr 1fr;}.footer-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:600px){.nav-links{display:none;}.info-grid{grid-template-columns:1fr;}.gallery-grid{grid-template-columns:1fr 1fr;}.cta-band-content{flex-direction:column;text-align:center;}.footer-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;gap:12px;}.story-text{padding:50px 28px;}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <img src="htmlpictures/Logo1.png" alt="Uncharted Travels">
+      <span>Uncharted Travels</span>
+    </a>
+    <div class="nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destination.html">Destinations</a></li>
+        <li><a href="family.html">Family Treks</a></li>
+        <li><a href="wildtrek.html">Wild Treks</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="tag">Treks for Everyone</span>
+      <h1>Family Treks</h1>
+      <p>Creating joyful memories through meaningful experiences</p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story reveal">
+    <div class="story-image"></div>
+    <div class="story-text">
+      <span class="eyebrow">How Trekking Transforms Families</span>
+      <h2>How Trekking<br><em>Impacts Your Children</em></h2>
+      <p>Over the past 13 years of organising treks, we have seen more and more families taking to trekking. The family bond gets strengthened, children get connected to nature and are impacted very deeply from the entire experience — physically, mentally, emotionally and psychologically.</p>
+      <p>Most modern families are struggling with new age problems. Children are not getting an opportunity to experience meaningful, fun, and undisturbed time with their parents. This is where trekking comes in. When done as a family, the benefits are tremendous.</p>
+      <p>We have found that trekking provides immense opportunities for parents and children to understand each other better. Children practise empathy, express gratitude, become more confident — all with a sense of joy.</p>
+    </div>
+  </section>
+
+  <!-- MULTI-DAY -->
+  <section class="multi-day reveal">
+    <h2>Multi-Day Treks<br><em>Handpicked for Families</em></h2>
+    <p>These treks are tailor-made to provide a lasting experience for your family as a whole — including overnight camping and 4-day Himalayan treks with 3 nights' camping in tents.</p>
+    <div class="min-age">Minimum age: 8 years</div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section">
+    <div class="reveal">
+      <p class="section-label">Family Destinations</p>
+      <h2 class="section-title">Beautiful Places<br><em>for All Ages</em></h2>
+    </div>
+    <!-- FIX: closing </div> for .gallery-grid and </section> were missing in original -->
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="htmlpictures/fam11 (1).jpg" alt="Naltar Valley">
+        <div class="overlay"><span>Naltar Valley</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="htmlpictures/fam11 (2).jpg" alt="Deosai Park">
+        <div class="overlay"><span>Deosai Park</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="htmlpictures/fam11 (3).jpg" alt="Margilla Hills">
+        <div class="overlay"><span>Margilla Hills</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="htmlpictures/fam5.jpg" alt="Mushkpuri Peak">
+        <div class="overlay"><span>Mushkpuri Peak</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="htmlpictures/fam6.jpg" alt="Lalazar">
+        <div class="overlay"><span>Lalazar</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="htmlpictures/fam7.jpg" alt="Saif-ul-Maluk Lake">
+        <div class="overlay"><span>Saif-ul-Maluk Lake</span></div>
+      </div>
+    </div><!-- ✅ FIX: closing tag was missing in original -->
+  </section>
+
+  <!-- INFO CARDS -->
+  <section class="info-section">
+    <div class="reveal">
+      <p class="section-label">What to Expect</p>
+      <h2 class="section-title">Everything You<br><em>Need to Know</em></h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-card reveal">
+        <div class="emoji">🛡️</div>
+        <h3>Safety First</h3>
+        <p>All our family routes are vetted for safety with 24/7 guide support and emergency protocols at every stage of the trek.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="emoji">🎒</div>
+        <h3>What to Pack</h3>
+        <p>We provide a detailed packing list tailored to your trek. Warm layers and sturdy footwear are the essentials — we handle the rest.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="emoji">🍽️</div>
+        <h3>Food & Stay</h3>
+        <p>Hygienic, nutritious meals and comfortable, weatherproof tents ensure a completely stress-free experience for the whole family.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-band reveal">
+    <div class="cta-band-bg"></div>
+    <div class="cta-band-content">
+      <h2>Ready for an <em>Adventure?</em></h2>
+      <a href="contact.html" class="btn-primary">Book Your Trek</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>Uncharted Travels</h4>
+        <p>Pakistan's premier mountain trekking company, connecting adventurers with the world's most dramatic landscapes since 2010.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <a href="destination.html">Destinations</a>
+        <a href="family.html">Family Treks</a>
+        <a href="wildtrek.html">Wild Treks</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Get In Touch</h5>
+        <p>info@unchartedtravels.pk</p>
+        <p>+92-XXX-XXXXXXX</p>
+        <p>Islamabad, Pakistan</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Uncharted Travels. All rights reserved.</p>
+      <p>Crafted with ♥ for the mountains</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => entries.forEach((e,i) => {
+      if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*80);
+    }), {threshold:0.08});
+    reveals.forEach(el=>obs.observe(el));
+  </script>
+</body>
+</html>

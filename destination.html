@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <meta name="description" content="Explore our family-friendly trekking adventures designed for all ages and skill levels.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinations — Uncharted Travels</title>
+  <link rel="icon" type="image/png" href="htmlpictures/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --ink:    #0D1F2D;
+      --forest: #2A5C45;
+      --gold:   #C9A85C;
+      --ivory:  #F5F0E8;
+      --white:  #FAFAF8;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Jost', sans-serif;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--white); color: var(--ink); overflow-x: hidden; }
+
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:24px 6%; background: rgba(13,31,45,0.95); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }
+    .nav-brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .nav-brand img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:1px solid rgba(201,168,92,0.4); }
+    .nav-brand span { color:#fff; font-family:var(--font-display); font-size:20px; font-weight:600; }
+    .nav-links ul { list-style:none; display:flex; gap:36px; }
+    .nav-links ul li a { color:rgba(255,255,255,0.8); text-decoration:none; font-size:11px; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; position:relative; transition:color 0.3s; }
+    .nav-links ul li a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--gold); transition:width 0.4s; }
+    .nav-links ul li a:hover { color:#fff; }
+    .nav-links ul li a:hover::after { width:100%; }
+
+    /* PAGE HERO */
+    .page-hero {
+      min-height: 70vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 6% 80px;
+      background-image:
+        linear-gradient(to top, rgba(13,31,45,0.85) 0%, rgba(13,31,45,0.3) 60%, rgba(13,31,45,0.4) 100%),
+        url('Csspictures/destback.JPG');
+      background-size: cover;
+      background-position: center;
+    }
+    .page-hero-content { color:#fff; }
+    .page-hero-content .tag { font-size:10px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:16px; }
+    .page-hero-content h1 { font-family:var(--font-display); font-size:clamp(3rem,7vw,6rem); font-weight:300; line-height:1; }
+    .page-hero-content p { font-size:15px; font-weight:300; opacity:0.75; margin-top:16px; letter-spacing:0.04em; }
+
+    /* INTRO */
+    .intro { display:grid; grid-template-columns:1fr 2fr; gap:60px; padding:80px 6%; background:var(--ivory); align-items:start; }
+    .intro h2 { font-family:var(--font-display); font-size:2.2rem; font-weight:400; line-height:1.2; }
+    .intro h2 em { font-style:italic; color:var(--forest); }
+    .intro p { font-size:15px; line-height:1.9; font-weight:300; color:#4a5a65; }
+
+    /* SEARCH */
+    .search-bar { padding:50px 6%; background:var(--white); }
+    .search-inner { max-width:600px; display:flex; border:1px solid #ddd; border-radius:4px; overflow:hidden; transition:box-shadow 0.3s; }
+    .search-inner:focus-within { box-shadow:0 0 0 3px rgba(42,92,69,0.15); border-color:var(--forest); }
+    .search-inner input { flex:1; padding:16px 20px; border:none; outline:none; font-family:var(--font-body); font-size:14px; background:transparent; color:var(--ink); }
+    .search-inner input::placeholder { color:#aaa; }
+    .search-inner button { padding:16px 30px; background:var(--forest); color:#fff; border:none; cursor:pointer; font-family:var(--font-body); font-size:12px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; transition:background 0.3s; }
+    .search-inner button:hover { background:var(--ink); }
+
+    /* GALLERY GRID */
+    .gallery-section { padding:20px 6% 100px; }
+    .gallery-grid { columns:3; gap:16px; }
+    .gallery-item { break-inside:avoid; margin-bottom:16px; position:relative; overflow:hidden; border-radius:4px; cursor:pointer; }
+    .gallery-item img { width:100%; display:block; transition:transform 0.6s ease; }
+    .gallery-item:hover img { transform:scale(1.05); }
+    .gallery-item .caption {
+      position:absolute; bottom:0; left:0; right:0;
+      background:linear-gradient(transparent, rgba(13,31,45,0.8));
+      color:#fff; padding:30px 18px 18px;
+      font-family:var(--font-display); font-size:1.1rem; font-weight:400;
+      opacity:0; transform:translateY(8px); transition:all 0.4s;
+    }
+    .gallery-item:hover .caption { opacity:1; transform:translateY(0); }
+
+    /* FOOTER */
+    footer { background:var(--ink); color:#fff; padding:70px 6% 28px; position:relative; }
+    footer::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; background:linear-gradient(90deg,var(--forest),var(--gold),var(--forest)); }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:60px; margin-bottom:50px; }
+    .footer-brand h4 { font-family:var(--font-display); font-size:1.5rem; font-weight:400; margin-bottom:14px; }
+    .footer-brand p { color:rgba(255,255,255,0.5); font-size:14px; line-height:1.8; font-weight:300; max-width:280px; }
+    .footer-col h5 { font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
+    .footer-col p, .footer-col a { color:rgba(255,255,255,0.5); font-size:14px; line-height:2.1; font-weight:300; text-decoration:none; display:block; transition:color 0.3s; }
+    .footer-col a:hover { color:var(--gold); }
+    .social-row { display:flex; gap:14px; margin-top:8px; }
+    .social-row a { width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.6); font-size:16px; text-decoration:none; transition:all 0.3s; }
+    .social-row a:hover { background:var(--gold); border-color:var(--gold); color:var(--ink); transform:translateY(-3px); }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:28px; display:flex; justify-content:space-between; align-items:center; }
+    .footer-bottom p { font-size:12px; color:rgba(255,255,255,0.3); font-weight:300; }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    @media(max-width:900px){ .gallery-grid{columns:2;} .intro{grid-template-columns:1fr;} .footer-grid{grid-template-columns:1fr 1fr;} }
+    @media(max-width:600px){ .gallery-grid{columns:2;} .nav-links{display:none;} .footer-grid{grid-template-columns:1fr;} .footer-bottom{flex-direction:column;gap:12px;} }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <img src="htmlpictures/Logo1.png" alt="Uncharted Travels">
+      <span>Uncharted Travels</span>
+    </a>
+    <div class="nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destination.html">Destinations</a></li>
+        <li><a href="family.html">Family Treks</a></li>
+        <li><a href="wildtrek.html">Wild Treks</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="tag">Explore Pakistan</span>
+      <h1>Destinations</h1>
+      <p>Creating joyful memories through meaningful experiences</p>
+    </div>
+  </section>
+
+  <section class="intro reveal">
+    <div>
+      <h2>Pakistan<br><em>Hiking Destinations</em></h2>
+    </div>
+    <div>
+      <p>At Uncharted Travels our specialty is expert-led hiking and backpacking adventures — this singular focus is what we are most passionate about and why we are one of the top trekking companies in Pakistan. The diversity we offer our guests lies in the types of hiking experiences available: backpacking trips, portered treks, base camp tours, and so much more. Our destinations span 30+ national parks and wilderness areas across the country.</p>
+    </div>
+  </section>
+
+  <section class="search-bar reveal">
+    <div class="search-inner">
+      <input type="text" placeholder="Search for a destination — Hunza, Skardu, Fairy Meadows…" aria-label="Search destinations">
+      <button type="button">Search</button>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="htmlpictures/dest1.jpg" alt="Baltistan">
+        <div class="caption">Baltistan</div>
+      </div>
+      <div class="gallery-item">
+        <img src="htmlpictures/dest7.jpg" alt="Khaplu">
+        <div class="caption">Khaplu</div>
+      </div>
+      <div class="gallery-item">
+        <img src="htmlpictures/dest3.jpg" alt="Skardu Airport">
+        <div class="caption">Skardu Airport</div>
+      </div>
+      <div class="gallery-item">
+        <img src="htmlpictures/dest4.jpg" alt="Altit Fort">
+        <div class="caption">Altit Fort</div>
+      </div>
+      <div class="gallery-item">
+        <img src="htmlpictures/dest5.jpg" alt="Attabad Lake">
+        <div class="caption">Attabad Lake</div>
+      </div>
+      <div class="gallery-item">
+        <img src="htmlpictures/dest8.jpg" alt="Hunza">
+        <div class="caption">Hunza</div>
+      </div>
+      <div class="gallery-item">
+        <img src="htmlpictures/dest6.jpg" alt="Karimabad">
+        <div class="caption">Karimabad</div>
+      </div>
+      <div class="gallery-item">
+        <img src="htmlpictures/dest9.jpg" alt="Rakaposhi">
+        <div class="caption">Rakaposhi View</div>
+      </div>
+      <div class="gallery-item">
+        <!-- FIX: was IMG_9.jpg — actual file is IMG_9.JPG (case-sensitive fix) -->
+        <img src="htmlpictures/IMG_9.JPG" alt="Karimabad">
+        <div class="caption">Karimabad</div>
+      </div>
+      <div class="gallery-item">
+        <!-- FIX: was IMG_8.jpg — actual file is IMG_8.JPG -->
+        <img src="htmlpictures/IMG_8.JPG" alt="Lake">
+        <div class="caption">Mountain Lake</div>
+      </div>
+      <div class="gallery-item">
+        <!-- FIX: was IMG_10.jpg — actual file is IMG_10.JPG -->
+        <img src="htmlpictures/IMG_10.JPG" alt="Karimabad">
+        <div class="caption">Karimabad</div>
+      </div>
+      <div class="gallery-item">
+        <!-- FIX: was IMG_5678.jpg — actual file is IMG_5678.JPG -->
+        <img src="htmlpictures/IMG_5678.JPG" alt="Shigar Fort">
+        <div class="caption">Shigar Fort</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>Uncharted Travels</h4>
+        <p>Pakistan's premier mountain trekking company, connecting adventurers with the world's most dramatic landscapes since 2010.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <a href="destination.html">Destinations</a>
+        <a href="family.html">Family Treks</a>
+        <a href="wildtrek.html">Wild Treks</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Get In Touch</h5>
+        <p>info@unchartedtravels.pk</p>
+        <p>+92-XXX-XXXXXXX</p>
+        <p>Islamabad, Pakistan</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Uncharted Travels. All rights reserved.</p>
+      <p>Crafted with ♥ for the mountains</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => entries.forEach((e,i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 60);
+    }), { threshold: 0.08 });
+    reveals.forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
