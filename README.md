@@ -1,5 +1,7 @@
 # 🏔️ Trekking Website – Uncharted Travels
 
+[![pages-build-deployment](https://github.com/ahmedabbas52233-a11y/Trekking-website/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/ahmedabbas52233-a11y/Trekking-website/actions/workflows/pages/pages-build-deployment)
+
 A responsive travel agency website showcasing adventure treks and family tours in Pakistan. Built with **HTML5 + CSS3**, featuring modern layouts, galleries, and clean UI design.
 
 ## 🌐 Live Demo
