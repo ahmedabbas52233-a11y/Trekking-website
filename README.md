@@ -2,6 +2,12 @@
 
 A responsive travel agency website showcasing adventure treks and family tours in Pakistan. Built with **HTML5 + CSS3**, featuring modern layouts, galleries, and clean UI design.
 
+## 🌐 Live Demo
+👉 [View Live Site]https://trekking-website-tawny.vercel.app
+
+## 📸 Preview
+![Trekking Website Preview](preview.gif)
+
 ---
 
 ## ✨ Features
